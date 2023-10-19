@@ -42,6 +42,10 @@ const CreateDataItem: React.FC<CreateDataItemProps> = ({ onCreate }) => {
       <h2>Create Data Item</h2>
       <form>
         <div>
+          <label>ID:</label>
+          <input type="text" name="id" value={newItem.id} onChange={handleInputChange} />
+        </div>
+        <div>
           <label>Name:</label>
           <input type="text" name="name" value={newItem.name} onChange={handleInputChange} />
         </div>

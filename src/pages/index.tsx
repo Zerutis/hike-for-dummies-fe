@@ -15,15 +15,18 @@ const Home: React.FC = () => {
         const hikes: DataItem[] = await fetchHikes();
         setData(hikes);
       } catch (error) {
-        // Handle error
+        console.log(error);
       }
     };
     fetchData();
   }, []);
 
   const validation = (item: DataItem) => {
-    var errorMessage = ""
+    var errorMessage = "";
 
+    if (item.id < 0) {
+      errorMessage = errorMessage + "- ID must be greater than 0\n";
+    }
     if (item.name === "") {
       errorMessage = errorMessage + "- Name cannot be empty\n";
     }
@@ -43,7 +46,7 @@ const Home: React.FC = () => {
     if (errorMessage !== "") {
       throw new Error(errorMessage);
     }
-  }
+  };
 
   const handleDelete = async (id: number) => {
     try {
